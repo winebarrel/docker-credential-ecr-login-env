@@ -1,4 +1,4 @@
-module github.com/winebarrel/docker-credential-ecr-login-with-env
+module github.com/winebarrel/docker-credential-ecr-login-env
 
 go 1.19
 

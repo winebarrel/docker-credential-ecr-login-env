@@ -5,7 +5,7 @@ import (
 
 	"github.com/docker/docker-credential-helpers/credentials"
 	"github.com/stretchr/testify/assert"
-	ecrenv "github.com/winebarrel/docker-credential-ecr-login-with-env"
+	ecrenv "github.com/winebarrel/docker-credential-ecr-login-env"
 )
 
 func TestAdd(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/docker/docker-credential-helpers/credentials"
-	ecrenv "github.com/winebarrel/docker-credential-ecr-login-with-env"
+	ecrenv "github.com/winebarrel/docker-credential-ecr-login-env"
 )
 
 var version string
@@ -15,8 +15,8 @@ var version string
 const ConfigFile = "ecr-login-env.json"
 
 func init() {
-	credentials.Name = "docker-credential-ecr-login-with-env"
-	credentials.Package = "github.com/winebarrel/docker-credential-ecr-login-with-env"
+	credentials.Name = "docker-credential-ecr-login-env"
+	credentials.Package = "github.com/winebarrel/docker-credential-ecr-login-env"
 	credentials.Version = version
 }
 
