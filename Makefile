@@ -8,9 +8,8 @@ build:
 vet:
 	go vet ./...
 
-mock-helper:
+mock-helper: internal/test/mock-helper.go
 	go build internal/test/mock-helper.go
-bck-i-search: go bui_
 
 .PHONY: test
 test: mock-helper
