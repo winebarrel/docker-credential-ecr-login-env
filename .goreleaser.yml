@@ -1,0 +1,23 @@
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - main: ./cmd/docker-credential-ecr-login-with-env
+    ldflags:
+      - -X main.version={{.Version}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+checksum:
+  name_template: "checksums.txt"
+brews:
+  - tap:
+      owner: winebarrel
+      name: homebrew-docker-credential-ecr-login-with-env
+    homepage: https://github.com/winebarrel/docker-credential-ecr-login-with-env
+    description: Wrapper command for docker-credential-ecr-login to add environment variables.
+    license: MIT
+    install: |
+      bin.install 'docker-credential-ecr-login-with-env'

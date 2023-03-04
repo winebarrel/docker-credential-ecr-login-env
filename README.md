@@ -4,6 +4,12 @@
 
 Wrapper command for docker-credential-ecr-login to add environment variables.
 
+## Installation
+
+```sh
+brew install winebarrel/docker-credential-ecr-login-with-env/docker-credential-ecr-login-with-env
+```
+
 ## Usage
 
 First, create `~/.docker/ecr-login-env.json`.
