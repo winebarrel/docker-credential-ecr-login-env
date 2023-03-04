@@ -1,18 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"os"
 	"path/filepath"
 
-	"github.com/BurntSushi/toml"
 	"github.com/docker/docker-credential-helpers/credentials"
 	ecrenv "github.com/winebarrel/docker-credential-ecr-login-with-env"
 )
 
 var version string
 
-const ConfigFile = "ecr-login-env.toml"
+const ConfigFile = "ecr-login-env.json"
 
 func init() {
 	credentials.Name = "docker-credential-ecr-login-with-env"
@@ -22,8 +22,14 @@ func init() {
 
 func main() {
 	home, _ := os.UserHomeDir()
+	file, err := os.ReadFile(filepath.Join(home, ".docker", ConfigFile))
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	var envs ecrenv.EnvByServerURL
-	_, err := toml.DecodeFile(filepath.Join(home, ".docker", ConfigFile), &envs)
+	err = json.Unmarshal(file, &envs)
 
 	if err != nil {
 		log.Fatal(err)
