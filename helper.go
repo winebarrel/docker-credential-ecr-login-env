@@ -13,11 +13,11 @@ const (
 	ECRLoginCmd = "docker-credential-ecr-login"
 )
 
-type EnvByServerURL map[string][]string
+type EnvByServerURL map[string]map[string]string
 
 type ECREnvHelper struct {
 	ECRLogin        string
-	EnvsByServerURL map[string][]string
+	EnvsByServerURL EnvByServerURL
 }
 
 func NewECREnvHelper(envs EnvByServerURL) *ECREnvHelper {
@@ -53,8 +53,8 @@ func (h *ECREnvHelper) Get(serverURL string) (string, string, error) {
 	cmd.Stdout = out
 
 	if envs, ok := h.EnvsByServerURL[serverURL]; ok {
-		for _, e := range envs {
-			cmd.Env = append(cmd.Env, e)
+		for k, v := range envs {
+			cmd.Env = append(cmd.Env, k+"="+v)
 		}
 	}
 
