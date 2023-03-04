@@ -3,21 +3,28 @@ package ecrenv
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
+	"os"
 	"os/exec"
 
 	"github.com/docker/docker-credential-helpers/credentials"
 )
 
-const ECRLoginCmd = "docker-credential-ecr-login"
+const (
+	ECRLoginCmd = "docker-credential-ecr-login"
+	ConfigFile  = "ecr-login-env.toml"
+)
+
+type EnvByServerURL map[string][]string
 
 type ECREnvHelper struct {
-	ECRLogin string
+	ECRLogin        string
+	EnvsByServerURL map[string][]string
 }
 
-func NewECREnvHelper() *ECREnvHelper {
+func NewECREnvHelper(envs EnvByServerURL) *ECREnvHelper {
 	return &ECREnvHelper{
-		ECRLogin: ECRLoginCmd,
+		ECRLogin:        ECRLoginCmd,
+		EnvsByServerURL: envs,
 	}
 }
 
@@ -41,13 +48,20 @@ func (h *ECREnvHelper) Delete(serverURL string) error {
 
 func (h *ECREnvHelper) Get(serverURL string) (string, string, error) {
 	cmd := exec.Command(h.ECRLogin, "get")
+	cmd.Env = os.Environ()
 	cmd.Stdin = bytes.NewBufferString(serverURL)
 	out := &bytes.Buffer{}
 	cmd.Stdout = out
+
+	if envs, ok := h.EnvsByServerURL[serverURL]; ok {
+		for _, e := range envs {
+			cmd.Env = append(cmd.Env, e)
+		}
+	}
+
 	err := cmd.Run()
 
 	if err != nil {
-		fmt.Println("koko")
 		return "", "", err
 	}
 

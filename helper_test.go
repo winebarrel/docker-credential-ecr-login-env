@@ -41,11 +41,18 @@ func TestGet(t *testing.T) {
 
 	h := &ecrenv.ECREnvHelper{
 		ECRLogin: "./mock-helper",
+		EnvsByServerURL: map[string][]string{
+			"ServerURL": {
+				"TEST_ServerURL=ServerURLValue",
+				"TEST_Username=UsernameValue",
+				"TEST_Secret=SecretValue",
+			},
+		},
 	}
 
 	username, secret, err := h.Get("ServerURL")
-	assert.Equal("Username", username)
-	assert.Equal("Secret", secret)
+	assert.Equal("UsernameValue", username)
+	assert.Equal("SecretValue", secret)
 	assert.NoError(err)
 }
 

@@ -1,6 +1,11 @@
 package main
 
 import (
+	"log"
+	"os"
+	"path/filepath"
+
+	"github.com/BurntSushi/toml"
 	"github.com/docker/docker-credential-helpers/credentials"
 	ecrenv "github.com/winebarrel/docker-credential-ecr-login-with-env"
 )
@@ -14,5 +19,13 @@ func init() {
 }
 
 func main() {
-	credentials.Serve(ecrenv.NewECREnvHelper())
+	home, _ := os.UserHomeDir()
+	var envs ecrenv.EnvByServerURL
+	_, err := toml.DecodeFile(filepath.Join(home, ".docker/ecr-login-env.toml"), &envs)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	credentials.Serve(ecrenv.NewECREnvHelper(envs))
 }

@@ -16,7 +16,12 @@ func main() {
 	case "store":
 		// nothing to do
 	case "get":
-		fmt.Println(`{"ServerURL":"ServerURL","Username":"Username","Secret":"Secret"}`)
+		fmt.Printf(
+			`{"ServerURL":"%s","Username":"%s","Secret":"%s"}`,
+			os.Getenv("TEST_ServerURL"),
+			os.Getenv("TEST_Username"),
+			os.Getenv("TEST_Secret"),
+		)
 	case "erase":
 		// nothing to do
 	case "list":
