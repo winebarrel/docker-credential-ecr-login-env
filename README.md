@@ -24,7 +24,7 @@ First, create `~/.docker/ecr-login-env.json`.
 }
 ```
 
-Then modify `/.docker/config.json`.
+Then modify `~/.docker/config.json`.
 
 ```json
 {
