@@ -11,7 +11,6 @@ import (
 
 const (
 	ECRLoginCmd = "docker-credential-ecr-login"
-	ConfigFile  = "ecr-login-env.toml"
 )
 
 type EnvByServerURL map[string][]string
