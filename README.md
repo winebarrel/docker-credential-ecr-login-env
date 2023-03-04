@@ -4,6 +4,8 @@
 
 Wrapper command for docker-credential-ecr-login to add environment variables.
 
+cf. https://github.com/awslabs/amazon-ecr-credential-helper
+
 ## Installation
 
 ```sh
