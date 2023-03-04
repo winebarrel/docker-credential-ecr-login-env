@@ -2,7 +2,7 @@ all: vet test build
 
 .PHONY: build
 build:
-	go build ./cmd/docker-credential-ecr-login-with-env
+	go build ./cmd/docker-credential-ecr-login-env
 
 .PHONY: vet
 vet:
