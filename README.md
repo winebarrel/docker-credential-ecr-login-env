@@ -9,6 +9,8 @@ cf. https://github.com/awslabs/amazon-ecr-credential-helper
 ## Installation
 
 ```sh
+# NOTE: docker-credential-ecr-login must also be installed
+#       see https://github.com/awslabs/amazon-ecr-credential-helper#installing
 brew install winebarrel/docker-credential-ecr-login-env/docker-credential-ecr-login-env
 ```
 
