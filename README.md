@@ -1,6 +1,6 @@
 # docker-credential-ecr-login-env
 
-[![build](https://github.com/winebarrel/docker-credential-ecr-login-env/actions/workflows/build.yml/badge.svg)](https://github.com/winebarrel/docker-credential-ecr-login-env/actions/workflows/build.yml)
+[![CI](https://github.com/winebarrel/docker-credential-ecr-login-env/actions/workflows/ci.yml/badge.svg)](https://github.com/winebarrel/docker-credential-ecr-login-env/actions/workflows/ci.yml)
 
 Wrapper command for docker-credential-ecr-login to add environment variables.
 
