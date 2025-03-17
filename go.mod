@@ -1,9 +1,11 @@
 module github.com/winebarrel/docker-credential-ecr-login-env
 
-go 1.19
+go 1.21
+
+toolchain go1.24.1
 
 require (
-	github.com/docker/docker-credential-helpers v0.9.2
+	github.com/docker/docker-credential-helpers v0.9.3
 	github.com/stretchr/testify v1.10.0
 )
 
