@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.25.1
 
 require (
-	github.com/docker/docker-credential-helpers v0.9.3
+	github.com/docker/docker-credential-helpers v0.9.4
 	github.com/stretchr/testify v1.11.1
 )
 
