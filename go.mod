@@ -2,7 +2,7 @@ module github.com/winebarrel/docker-credential-ecr-login-env
 
 go 1.21
 
-toolchain go1.26.6
+toolchain go1.27.0
 
 require (
 	github.com/docker/docker-credential-helpers v0.9.8
